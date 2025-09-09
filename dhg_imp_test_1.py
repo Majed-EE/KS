@@ -13,7 +13,7 @@ for x in range (5):
 for x in command_table:
 	print(x)
 global stiff
-def set_test_impedance_control():
+def set_test_impedance_control():# function to change impedance
     global command_table,stiff
     
     new_impedance_control = command.ImpedanceControl()
@@ -35,7 +35,7 @@ def test_worker(command_write_worker):
     i=0
     global stiff
     while True:
-        new_impedance_control = set_test_impedance_control()
+        new_impedance_control = set_test_impedance_control() # changing impedance
         command_write_worker.add_new_impedance_control(337785601,
                                                        new_impedance_control)  # the id need to be the id of your hands
         time.sleep(1)
@@ -48,12 +48,12 @@ def test_worker(command_write_worker):
             print("changing stiffness and set point back to 0 ")
 	    stiff=0
 	    for x in range (5):
-		command_table.append([0,0])
+		command_table.append([0,0]) # why not command_table[0]=[0,0]
 	    for x in command_table:
 		print("command table new")		
 		print(x)
 
-	    new_impedance_control = set_test_impedance_control()
+	    new_impedance_control = set_test_impedance_control() # setting back to zero
             command_write_worker.add_new_impedance_control(337785601,
                                                        new_impedance_control)
 	    print("graceful shutdown test")
